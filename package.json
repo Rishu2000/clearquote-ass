@@ -20,7 +20,10 @@
   "homepage": "https://github.com/Rishu2000/clearquote-ass#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "knex": "^0.21.21",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "pg": "^8.7.1"
   }
 }
