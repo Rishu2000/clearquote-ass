@@ -7,7 +7,8 @@ edit.get('/', (req, res) => {
 })
 edit.post('/', async (req, res) => {
     if(req.session.Authentication){
-        const {email,username,password,phoneNo} = req.body;
+        const {email} = req.session.Authentication;
+        const {username,password,phoneNo} = req.body;
             if(username){
                 await knex('users')
                 .where({email: email})
