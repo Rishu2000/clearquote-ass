@@ -5,21 +5,21 @@ const {knex} = require('./Signup');
 edit.get('/', (req, res) => {
     res.json('edit User.');
 })
-edit.post('/', (req, res) => {
+edit.post('/', async (req, res) => {
     if(req.session.Authentication){
         const {email,username,password,phoneNo} = req.body;
             if(username){
-                knex('users')
+                await knex('users')
                 .where({email: email})
                 .update({name: username})
             }
             if(password){
-                knex('users')
+                await knex('users')
                 .where({email: email})
                 .update({password: password})
             }
             if(phoneNo){
-                knex('users')
+                await knex('users')
                 .where({email: email})
                 .update({phone: phoneNo})
             }
