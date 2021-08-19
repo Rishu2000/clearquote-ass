@@ -5,7 +5,7 @@ const {knex} = require('./Signup');
 edit.get('/', (req, res) => {
     res.json('edit User.');
 })
-edit.post('/', async (req, res) => {
+edit.put('/', async (req, res) => {
     if(req.session.Authentication){
         const {email} = req.session.Authentication;
         const {username,password,phoneNo} = req.body;
