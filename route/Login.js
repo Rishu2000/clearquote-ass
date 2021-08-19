@@ -1,6 +1,5 @@
 const express = require('express');
 const login = express();
-const welcome = require("./Welcome");
 const {knex} = require('./Signup');
 
 login.use((req,res,next) => {
@@ -11,7 +10,6 @@ login.use((req,res,next) => {
         res.status(404).json("Not Authenticated.");
     }
 })
-login.use("/welcome",welcome);
 
 login.get('/',(req,res) => {
     res.json({
