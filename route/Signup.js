@@ -18,12 +18,12 @@ signup.get('/',(req, res) => {
     }
 })
 signup.post('/',(req, res) => {
-    const {username,email,password} = req.body;
+    const {username,email,password,phoneNo} = req.body;
     if(!email || !password || !username){
         req.session.destroy();
         res.status(400).json({
             Success:false,
-            Message:"Please enter all the required fields."
+            Message:"Please enter at least email, password, and username."
         });
     }else{
         knex('users')
@@ -37,14 +37,14 @@ signup.post('/',(req, res) => {
                 })
             }else{
                 knex('users')
-                .insert({name:username, password:password, email:email})
+                .insert({name:username, password:password, email:email, phone:phoneNo})
                 .then(() => {
                     req.session.Authentication = req.body;
                     res.status(201).json({
                         Success: true,
                         Message:username
                     });
-                    console.log(req.session);
+                    // console.log(req.session);
                 })
             }
         })
