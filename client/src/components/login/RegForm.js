@@ -16,7 +16,7 @@ const RegForm = () => {
                     Id: 'Name',
                     Type: 'text',
                     Value: name,
-                    Desc:'Enter your User Name.',
+                    Desc:'Enter your Name.',
                     onChange:(e) => setName(e.target.value)
                 },{
                     Id: 'Email',

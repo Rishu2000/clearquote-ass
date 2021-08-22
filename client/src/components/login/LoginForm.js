@@ -3,7 +3,7 @@ import FormGroup from '../form/FormGroup'
 
 const LoginForm = () => {
 
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     return (
@@ -11,11 +11,11 @@ const LoginForm = () => {
             <h2>Login</h2>
             {[
                 {
-                    Id: 'Username',
-                    Type: 'text',
-                    Value: username,
-                    Desc:'Enter your User Name.',
-                    onChange:(e) => setUsername(e.target.value)
+                    Id: 'Email',
+                    Type: 'email',
+                    Value: email,
+                    Desc:'Enter your Email.',
+                    onChange:(e) => setEmail(e.target.value)
                 },{
                     Id: 'Password',
                     Type: 'password',
