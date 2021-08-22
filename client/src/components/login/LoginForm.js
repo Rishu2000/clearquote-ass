@@ -1,14 +1,32 @@
 import React, {useState} from 'react'
 import FormGroup from '../form/FormGroup'
+import axios from "axios"
 
 const LoginForm = ({setUser}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loginError, setLoginError] = useState(null)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:4000/login',{email,password})
+            .then((res) => {
+                // console.log(res.data);
+                setUser(res.data.Message)
+            })
+            .catch((err) => {
+                // console.log(err.response.data.Message);
+                setLoginError(err.response.data.Message)
+            })
+    }
 
     return (
-        <form className="LoginForm">       {/**Purpose of using onSubmit is when we click enter it will triger. */}
+        <form className="LoginForm" onSubmit={handleSubmit}>       {/**Purpose of using onSubmit is when we click enter it will triger. */}
             <h2>Login</h2>
+            {loginError && (
+                <div className="alert alert-danger">{loginError}</div>
+            )}
             {[
                 {
                     Id: 'Email',
