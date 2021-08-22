@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cors = require('cors');
 const login = require('./route/Login');
 const logout = require('./route/Logout');
 const {signup} = require('./route/Signup');
@@ -9,6 +10,7 @@ const deleteUser = require('./route/DeleteUser');
 const session = require('express-session');
 const port = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(session({
     secret: 'corona',
