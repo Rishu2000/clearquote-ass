@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import FormGroup from '../form/FormGroup'
 
-const LoginForm = () => {
+const LoginForm = ({setUser}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

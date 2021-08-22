@@ -19,11 +19,11 @@ signup.get('/',(req, res) => {
 })
 signup.post('/',(req, res) => {
     const {username,email,password,phoneNo} = req.body;
-    if(!email || !password || !username){
+    if(!email || !password || !username || !phoneNo){
         req.session.destroy();
         res.status(400).json({
             Success:false,
-            Message:"Please enter at least email, password, and username."
+            Message:"All the fields are required."
         });
     }else{
         knex('users')
