@@ -10,7 +10,7 @@ const [user, setUser] = useState(null);
   return (
     <div className="container">
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 pt-5">
             {user?<Welcome/>:<Login/>}
           </div>
         </div>
