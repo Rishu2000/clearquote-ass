@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 const Welcome = ({user, setUser}) => {
+
+const [users, setUsers] = useState([]);
 
 const handleLogout = (e) => {
     e.preventDefault();
@@ -12,9 +14,17 @@ const handleLogout = (e) => {
         })
 }
 
+useEffect(() => {
+    axios.get('http://localhost:4000/users')
+        .then((res) => {
+            setUsers([...res.data]);
+        })
+}, [])
+
     return (
         <div>
             Welcome {user}   
+            {users? (
             <table className="table">
                 <thead>
                     <tr>
@@ -25,25 +35,19 @@ const handleLogout = (e) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    {users.map((user,key) => (
+                        <tr key={key}>
+                        <th scope="row">{user.id}</th>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.phone}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
+            ): (
+                <div className="alert alert-info">Please data are fetching.</div>
+            )}
             <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
         </div>
     )

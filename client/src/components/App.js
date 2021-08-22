@@ -12,7 +12,7 @@ const [regError, setRegError] = useState(null);
     <div className="container">
         <div className="row">
           <div className="col-12 pt-5">
-            {user?<Welcome user={user}/>:<Login user={user} setUser={setUser} setRegError={setRegError} regError={regError}/>}
+            {user?<Welcome user={user} setUser={setUser}/>:<Login user={user} setUser={setUser} setRegError={setRegError} regError={regError}/>}
           </div>
         </div>
       </div>

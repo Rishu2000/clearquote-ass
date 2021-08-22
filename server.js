@@ -7,6 +7,7 @@ const logout = require('./route/Logout');
 const {signup} = require('./route/Signup');
 const edituser = require('./route/EditUser');
 const deleteUser = require('./route/DeleteUser');
+const users = require('./route/Users');
 const session = require('express-session');
 const port = process.env.PORT || 4000;
 
@@ -25,6 +26,7 @@ app.use('/logout',logout);
 app.use('/signup',signup);
 app.use('/edituser',edituser);
 app.use('/delete',deleteUser);
+app.use('/users',users);
 
 app.get('/', (req, res) => {
     res.json("server started.");
